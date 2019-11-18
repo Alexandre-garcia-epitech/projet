@@ -1,0 +1,9 @@
+^EOD
+^EOC
+(space)
+x
+q
+p
+No 
+3 
+20*10
