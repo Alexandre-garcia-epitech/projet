@@ -1,0 +1,46 @@
+{{define "main"}}
+    <div class="col-10 offset-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+        <div class="rec_event_single">
+            <div class="row">
+                <div class=" col-12 col-lg-6">
+                    <img class="header-img" src="{{.Site.BaseURL}}images/{{index .Params.photos 0}}" alt="">
+                </div>
+                {{$t := .Site.GetPage "/associations"}}
+                {{$title := .Params.association}}
+                <div class="col-12 col-lg-6">
+                   <h2 class="title_event" style="padding-top: 30px; font-size: 38px">{{.Title}}</h2>
+                    <br>
+                    <p style="text-align: center;font-size: 16px; padding-top: 20px; color: #4d4d4d">{{.Params.postalAddress.label}}</p>
+                    <p style="text-align: center;font-size: 16px; margin-bottom: -3px;padding-top: 10px; color: #4d4d4d">{{(time .Params.when).Format "Mon, 02 Jan 2006 15:04"}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p style="margin-top: 20px; padding-right: 20px; font-size: 16px; color: #4d4d4d">{{.Params.Description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-right: 15px; padding-left: 15px; margin-top: 50px">
+            <div class="col-12" style="border: solid 1px #820900;"></div>
+            <p class="title_assos">association participant à cet evenement</p>
+        </div>
+        {{ range $t.Data.Pages }}
+        {{ if eq $title .Params.Title}}
+        <div style="margin-top: 30px; margin-bottom: 30px;"></div>
+        <div class="rec_event_single">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <img class="header-img" style="margin-bottom: 16px;" src="{{.Site.BaseURL}}images/{{index .Params.photo 0}}" alt="">
+                </div>
+                <div class="col-12 col-lg-6">
+                    <a href="{{ .Permalink }}">
+                        <p style="text-align: center; font-size: 38px;color: #ffffff; text-transform: uppercase">{{ $title }}</p>
+                    </a>
+                    <p style="text-align: center; color: #3a3333; font-size: 20px; margin-top: 25px;">{{.Params.domain}}</p>
+                </div>
+            </div>
+        </div>
+        {{end}}
+        {{end}}
+    </div>
+{{end}}

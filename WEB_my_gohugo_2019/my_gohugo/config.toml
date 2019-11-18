@@ -1,0 +1,10 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "my_gohugo-theme"
+[params]
+    headerImg = "images/header.jpg"
+    header2Img = "images/header_2.jpg"
+    header3Img = "images/header_3.jpg"
+    imgArticle = "images/lib.jpg"
+    imgMairie = "images/mairie-banon.jpg"

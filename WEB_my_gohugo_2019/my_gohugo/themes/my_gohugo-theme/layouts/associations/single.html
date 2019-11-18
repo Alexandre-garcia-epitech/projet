@@ -1,0 +1,98 @@
+{{define "main"}}
+
+<div class="col-10 offset-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+    <div class="rec_event_single">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <img class="header-img" src="{{.Site.BaseURL}}images/{{index .Params.photo 0}}" alt="">
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2 class="title_event" style="padding-top: 30px; font-size: 35px;">{{.Title}}</h2>
+                <p style="text-align: center;font-size: 20px; margin-bottom: -3px;padding-top: 10px; color: #4d4d4d">{{.Params.domain}}</p>
+                <p style="text-align: center;font-size: 20px; padding-top: 30px; color: #4d4d4d">{{.Params.address}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p style="margin-top: 36px; padding-right: 20px; font-size: 20px; color: #4d4d4d;">{{.Params.Description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-right: 15px; padding-left: 15px; margin-top: 50px">
+        <div class="col-12" style="border: solid 1px #820900;"></div>
+        <div class="col-12 col-lg-6" style="padding-left: 0">
+            <p class="title_assos">évenement relatif à cet association</p>
+        </div>
+        <script>
+            function changeEventMode(modeId) {
+                if (modeId == 0) {
+                    document.getElementById("archivedEvents").classList.add("hideEvent");
+                    document.getElementById("upcomingEvents").classList.remove("hideEvent");
+                }
+                if (modeId == 1) {
+                    document.getElementById("upcomingEvents").classList.add("hideEvent");
+                    document.getElementById("archivedEvents").classList.remove("hideEvent");
+                }
+            }
+        </script>
+        <div class="col-12 col-lg-6">
+            <button onclick="changeEventMode(0)" class="button_event_association">Upcoming</button>
+            <button onclick="changeEventMode(1)" class="button_event_association">Archived</button>
+        </div>
+    </div>
+    {{$t := .Site.GetPage "/events"}}
+    {{$title := .Params.Title}}
+    <div id="upcomingEvents" class="hideEvent">
+        {{ $nowFormatted := time (now.Format "Mon, 02 Jan 2006 15:04:05 MST")}}
+        {{ $var7 := where .Site.RegularPages "Type" "events" }}
+        {{ $var8 := where $var7 "Draft" "eq" false }}
+        {{ $var9 := where $var8 "Params.when" "gt" $nowFormatted.String}}
+
+        <div style="margin-top: 30px; margin-bottom: 30px;"></div>
+        {{ range $var9}}
+        {{if eq $title .Params.association}}
+        <div class="rec_event_single">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <img class="header-img" style="margin-bottom: 16px;" src="{{.Site.BaseURL}}images/{{index .Params.photos 0}}" alt="">
+                </div>
+                <div class="col-12 col-lg-6">
+                    <a href="{{ .Permalink }}">
+                        <p class="title_event" style="text-align: center; font-size: 38px;color: #ffffff; text-transform: uppercase">{{ .Params.Title }}</p>
+                    </a>
+                    <p style="text-align: center; color: #3a3333; font-size: 20px; margin-top: 25px;">{{.Params.postalAddress.label}}</p>
+                    <p style="text-align: center; color: #3a3333; font-size: 20px">{{ (time .Params.when).Format "02 January 2006 15:04" }}</p>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+    <div id="archivedEvents" class="hideEvent">
+        {{ $nowFormatted := time (now.Format "Mon, 02 Jan 2006 15:04:05 MST")}}
+        {{ $var4 := where .Site.RegularPages "Type" "events" }}
+        {{ $var5 := where $var4 "Draft" "eq" false }}
+        {{ $var6 := where $var5 "Params.when" "lt" $nowFormatted.String}}
+
+        <div style="margin-top: 30px; margin-bottom: 30px;"></div>
+        {{ range $var6}}
+        {{if eq $title .Params.association}}
+        <div class="rec_event_single">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <img class="header-img" style="margin-bottom: 16px;" src="{{.Site.BaseURL}}images/{{index .Params.photos 0}}" alt="">
+                </div>
+                <div class="col-12 col-lg-6">
+                    <a href="{{ .Permalink }}">
+                        <p class="title_event" style="text-align: center; font-size: 38px;color: #ffffff; text-transform: uppercase">{{ .Params.Title }}</p>
+                    </a>
+                    <p style="text-align: center; color: #3a3333; font-size: 20px; margin-top: 25px;">{{.Params.postalAddress.label}}</p>
+                    <p style="text-align: center; color: #3a3333; font-size: 20px">{{ (time .Params.when).Format "02 January 2006 15:04" }}</p>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
+{{end}}

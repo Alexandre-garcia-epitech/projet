@@ -1,0 +1,70 @@
+{{define "main" }}
+    <div class="rec_mairie" style="margin-bottom: 30px; margin-top: 20px">
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <img class="header-img" src="{{.Site.BaseURL}}/{{.Site.Params.imgMairie}}" alt="" style="border-radius: 4px">
+                <h3 style="font-family: Roboto; text-align: center; padding-top: 40px; color: #ffffff; text-transform: uppercase">Petit cours d'histore sur notre ville !</h3>
+            </div>
+            <div class="col-lg-8 col-12">
+                <p style="text-align: left;font-size: 16px; color: #4d4d4d">Le village médiéval de Banon, situé au sommet du bourg, est délimité par les vestiges des remparts de l'ancien château. Le portail à mâchicoulis, du XIVème siècle, en constitue l'accès principal (pour les piétons). Les remparts, dont on peut admirer un bel échantillon entre le portail et la tour carrée, avaient 800 mètres de pourtour, un mètre d'épaisseur et dix mètres de haut. C'est sur ces remparts qu'ont été construites les maisons de la rue des Arcades. Dans l'une d'elle, J.F. Palhier, député du département du "Conseil des Cinq Cents" de la Révolution, a abrité la fuite de Robespierre le jeune et de Ricord en août 1793. Des façades d'échoppes moyenâgeuses subsistent par endroit. Au point le plus élevé du village, près de l'ancien Hôtel-Dieu et contre l'église désaffectée, à l'emplacement d'un monticule, existait déjà au début du XIIème siècle un château fort appartenant aux Simiane, seigneur de Banon. Ce château fut remanié au XIIIème siècle et remplacé au XVIIIème siècle par un château assez modeste qui sera incendié à la Révolution, obligeant Alexandre de Tournon-Simiane, son dernier propriétaire, à s'enfuir. On raconte qu'il partit par le sentier de la source des Brieux et qu'en se retournant une dernière fois avant de perdre Banon de vue, il ne vit qu'un amas de bois et de pierres. Remaniée à maintes reprises, l'église attenante aurait été partiellement reconstruite sur les restes de la chapelle du château. Selon un plan de Banon érigé en 1782, l'ancien Hôtel-Dieu était alors constitué de deux blocs de trois et quatre maisons, dont l'hôpital et le four banal du village. Il fut créé en 1830 sous le nom d'"Hôtel-Dieu de l'Immaculée Conception", sa partie sud réservée aux religieuses étant appelée "Maison des Soeurs". Il fonctionna un peu moins de cent ans et fut ensuite remplacé en bas du village par un nouvel hôpital/hospice construit grâce à la générosité de Dieudonné Collomp dont il porte le nom. L'hôtel-Dieu fut utilisé pendant la dernière guerre pour héberger des réfugiés chassés de leurs maisons par la guerre 1939-1945. porche à Banon Ce village a subi diverses attaques dont notamment celle de Raimon de Turenne au XIVème siècle qui occupa le château, puis un siège conduit par le seigneur de Montbrun, et, en l'an 7 de la Révolution, les massacres commis par des bandes organisées de brigands.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-right: 15px; padding-left: 15px">
+        <div class="col-12" style="border: solid 1px #820900;"></div>
+        <p style="color: #ffffff; font-size: 30px; padding-left: 30px; text-transform: uppercase">Maire</p>
+    </div>
+
+<div class="row">
+    {{ range .Data.Pages}}
+        {{ if eq .Params.role "Maire"}}
+                <div class="col-12 col-lg-3 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px;">
+                    <div class="rec_event" style="text-align: center; margin-bottom: 15px">
+                        <img class="header-img" src="{{.Site.BaseURL}}images/{{index .Params.photo 0}}" alt="">
+                        <h2 class="title_event" style="padding-top: 10px; padding-bottom: 5px; text-shadow: 1px 1px 2px rgb(117, 114, 113);">{{.Params.lastName}}</h2>
+                        <p style="text-align: center;font-size: 17px; margin-bottom: -3px; padding-bottom: 10px">{{.Params.firstNames}}</p>
+                    </div>
+                </div>
+        {{end}}
+    {{end}}
+</div>
+
+    <div class="row" style="padding-right: 15px; padding-left: 15px">
+        <div class="col-12" style="border: solid 1px #820900;"></div>
+        <p style="color: #ffffff; font-size: 30px; padding-left: 30px; text-transform: uppercase">Député</p>
+    </div>
+
+<div class="row">
+    {{ range .Data.Pages}}
+        {{ if eq .Params.role "Député"}}
+                <div class="col-12 col-lg-3 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+                    <div class="rec_event" style="text-align: center; margin-bottom: 15px">
+                        <img class="header-img" src="{{.Site.BaseURL}}images/{{index .Params.photo 0}}" alt="">
+                        <h2 class="title_event" style="padding-top: 10px; padding-bottom: 5px; text-shadow: 1px 1px 2px rgb(117, 114, 113);">{{.Params.lastName}}</h2>
+                        <p style="text-align: center;font-size: 17px; margin-bottom: -3px; padding-bottom: 10px">{{.Params.firstNames}}</p>
+                    </div>
+                </div>
+        {{end}}
+    {{end}}
+</div>
+
+<div class="row" style="padding-right: 15px; padding-left: 15px">
+        <div class="col-12" style="border: solid 1px #820900;"></div>
+        <p style="color: #ffffff; font-size: 30px; padding-left: 30px; text-transform: uppercase">fonctionnaire</p>
+    </div>
+
+<div class="row">
+    {{ range .Data.Pages}}
+        {{ if eq .Params.role "Fonctionnaire"}}
+                <div class="col-12 col-lg-3 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+                    <div class="rec_event" style="text-align: center">
+                        <img class="header-img " src="{{.Site.BaseURL}}images/{{index .Params.photo 0}}" alt="">
+                        <h2 class="title_event" style="padding-top: 10px; padding-bottom: 5px; text-shadow: 1px 1px 2px rgb(117, 114, 113); ">{{.Params.lastName}}</h2>
+                        <p style="text-align: center; margin-bottom: -3px; padding-bottom: 10px; font-size: 17px">{{.Params.firstNames}}</p>
+                    </div>
+                </div>
+        {{end}}
+    {{end}}
+</div>
+{{end}}

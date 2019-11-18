@@ -1,0 +1,28 @@
+.home-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 60%;
+    margin: auto;
+}
+
+.home-row {
+    width: 100%;
+}
+
+.home-title {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.home-description {
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-family: Roboto;
+    letter-spacing: 1px;
+}
+

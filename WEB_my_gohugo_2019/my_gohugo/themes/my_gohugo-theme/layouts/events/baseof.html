@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body>
+        {{ partial "header.html" . }}
+        <div id="content">
+            <div class="container">
+                <div class="row" style="margin-left: 0px; margin-right: 0px; margin-top: 20px">
+                    <div class="col-12 col-md-7 col-lg-10 sindenav_index">
+                        {{ block "main" . }}{{ end }}
+                    </div>
+                    <div class="col-12 col-md-2 offset-md-3 offset-lg-0 col-lg-2 sindenav_index">
+                        {{partial "sidenav.html" . }}
+                    </div>
+                </div>
+            </div>
+        {{ partial "footer.html" . }}
+    </body>
+</html>

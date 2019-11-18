@@ -1,0 +1,35 @@
+{
+  "name": "gatsby-starter-hello-world",
+  "private": true,
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "gatsby": "^2.15.31",
+    "gatsby-source-filesystem": "^2.1.33",
+    "gatsby-source-mysql": "^2.2.1",
+    "gatsby-transformer-remark": "^2.6.30",
+    "office-ui-fabric": "^2.6.3",
+    "office-ui-fabric-react": "^7.47.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-icons": "^3.7.0",
+    "react-intl": "^3.3.2",
+    "react-redux": "^7.1.1",
+    "react-types": "^0.1.0",
+    "redux": "^4.0.4",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}

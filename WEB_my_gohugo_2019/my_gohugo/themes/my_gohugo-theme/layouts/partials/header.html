@@ -1,0 +1,56 @@
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a href="/">Home</a>
+            <div class="dropdown-container">
+                <button class="dropdown-button">Organizations</button>
+                <div class="dropdown-content">
+                    <a href="{{.Site.BaseURL}}/conseil-municipal">Municipal Counsil</a>
+                    <a href="{{.Site.BaseURL}}/associations">Associations</a>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <button class="dropdown-button">Events</button>
+                <div class="dropdown-content">
+                    <a href="{{.Site.BaseURL}}/events">All Events</a>
+                    <a href="{{.Site.BaseURL}}/events">Upcoming Events</a>
+                    <a href="{{.Site.BaseURL}}/events">Archived Events</a>
+                </div>
+            </div>
+            <a href="{{.Site.BaseURL}}/calendar">Calendar</a>
+        </div>
+        <div id="main-img">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="header-img" src="{{.Site.BaseURL}}/{{.Site.Params.headerImg}}" alt="">
+                    </div>
+
+                    <div class="item">
+                        <img class="header-img" src="{{.Site.BaseURL}}/{{.Site.Params.header2Img}}" alt="">
+                    </div>
+
+                    <div class="item">
+                        <img class="header-img" src="{{.Site.BaseURL}}/{{.Site.Params.header3Img}}" alt="">
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="border-radius: 4px">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next" style="border-radius: 4px">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <h1 class="title-header">Bienvenue sur le site de la ville de Banon</h1>
+        </div>
+    </div>
+</header>

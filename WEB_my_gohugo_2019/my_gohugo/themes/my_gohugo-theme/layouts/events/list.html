@@ -1,0 +1,68 @@
+{{define "main" }}
+<script>
+    function changeEventMode(modeId) {
+        if (modeId == 0) {
+            document.getElementById("archivedEvents").classList.add("hideEvent");
+            document.getElementById("upcomingEvents").classList.add("hideEvent");
+            document.getElementById("allEvents").classList.remove("hideEvent");
+        }
+        if (modeId == 1) {
+            document.getElementById("allEvents").classList.add("hideEvent");
+            document.getElementById("archivedEvents").classList.add("hideEvent");
+            document.getElementById("upcomingEvents").classList.remove("hideEvent");
+        }
+        if (modeId == 2) {
+            document.getElementById("upcomingEvents").classList.add("hideEvent");
+            document.getElementById("allEvents").classList.add("hideEvent");
+            document.getElementById("archivedEvents").classList.remove("hideEvent");
+        }
+    }
+</script>
+<button onclick="changeEventMode(0)" class="button_event">All</button>
+<button onclick="changeEventMode(1)" class="button_event">Upcoming</button>
+<button onclick="changeEventMode(2)" class="button_event">Archived</button>
+<div id="allEvents" class="button_hide">
+    {{ range .Data.Pages}}
+    <div class="col-12 col-lg-4 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+        <div class="rec_event">
+            <a href="{{.Permalink}}"><h2 class="title_event" style="text-shadow: 1px 1px 2px rgb(117, 114, 113);">{{.Title}}</h2></a>
+            <p style="text-align: center;font-size: 16px; margin-bottom: -3px; color: #4d4d4d; padding-bottom: 3px; padding-top: 6px;">{{.Params.postalAddress.label}}</p>
+            <p style="text-align: center;font-size: 16px;  color: #4d4d4d">{{(time .Params.when).Format "Mon, 02 Jan 2006 15:04"}}</p>
+        </div>
+    </div>
+    {{end}}
+</div>
+<div id="archivedEvents" class="hideEvent">
+    {{ $nowFormatted := time (now.Format "Mon, 02 Jan 2006 15:04:05 MST")}}
+    {{ $var4 := where .Site.RegularPages "Type" "events" }}
+    {{ $var5 := where $var4 "Draft" "eq" false }}
+    {{ $var6 := where $var5 "Params.when" "lt" $nowFormatted.String}}
+
+    {{ range $var6}}
+    <div class="col-12 col-lg-4 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+        <div class="rec_event">
+            <a href="{{.Permalink}}"><h2 class="title_event" style="text-shadow: 1px 1px 2px rgb(117, 114, 113); padding-left: 0; padding-right: 0">{{.Title}}</h2></a>
+            <p style="text-align: center;font-size: 16px; margin-bottom: -3px; color: #4d4d4d; padding-bottom: 3px; padding-top: 6px;">{{.Params.postalAddress.label}}</p>
+            <p style="text-align: center;font-size: 16px;  color: #4d4d4d">{{(time .Params.when).Format "Mon, 02 Jan 2006 15:04"}}</p>
+        </div>
+    </div>
+    {{end}}
+</div>
+<div id="upcomingEvents" class="hideEvent">
+    {{ $nowFormatted := time (now.Format "Mon, 02 Jan 2006 15:04:05 MST")}}
+    {{ $var7 := where .Site.RegularPages "Type" "events" }}
+    {{ $var8 := where $var7 "Draft" "eq" false }}
+    {{ $var9 := where $var8 "Params.when" "gt" $nowFormatted.String}}
+
+    {{ range $var9}}
+    <div class="col-12 col-lg-4 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+        <div class="rec_event">
+            <a href="{{.Permalink}}"><h2 class="title_event" style="text-shadow: 1px 1px 2px rgb(117, 114, 113);">{{.Title}}</h2></a>
+            <p style="text-align: center;font-size: 16px; margin-bottom: -3px; color: #4d4d4d; padding-bottom: 3px; padding-top: 6px;">{{.Params.postalAddress.label}}</p>
+            <p style="text-align: center;font-size: 16px;  color: #4d4d4d">{{(time .Params.when).Format "Mon, 02 Jan 2006 15:04"}}</p>
+        </div>
+    </div>
+    {{end}}
+</div>
+
+{{end}}

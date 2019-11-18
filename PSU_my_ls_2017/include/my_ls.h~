@@ -1,0 +1,45 @@
+/*
+** EPITECH PROJECT, 2017
+** ls
+** File description:
+** ls
+*/
+
+
+
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+
+typedef struct element
+{
+	char *name;
+	struct element *next;
+	struct element *prev;
+}t_element;
+
+typedef struct my_ls
+{
+	int flag[5];
+	t_element *list;
+	char ** path;
+	
+/*	int(*ptr[5]);
+
+	ptr[0] = &my_c;
+	ptr[1] = &my_s;
+	ptr[2] = &my_i;
+	ptr[3] = &my_b;
+	ptr[4] = &my_o;
+	(*ptr[flag]);
+*/
+}my_ls;
+
+int	my_option(char **av, my_ls *ls);
+int	my_check(char *flag, my_ls *ls);
+//void	BNP(struct dirent *ls);
+int	my_putstr(char *str);
+//void    ls_course(struct stat nb);

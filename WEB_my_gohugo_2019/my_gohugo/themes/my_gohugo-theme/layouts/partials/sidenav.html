@@ -1,0 +1,17 @@
+ <div class="sidenav" style="float: right; margin-top: 20px">
+     <div class="search-container">
+         <form action="/action_page.php" class="modif_rec">
+             <input type="text" placeholder="Search.." name="search">
+             <button type="submit"><i class="fa fa-search"></i></button>
+         </form>
+     </div>
+     <p style="text-align: center">Spotlight</p>
+     {{ $var1 :=.Site.GetPage "/associations" }}
+     {{range $var1.Data.Pages}}
+     <div class="rec_sidenav">
+         <a href="{{.Permalink}}">
+             <p style="color: #484040; text-align: center; padding: 0; font-size: 20px">{{upper .Params.Title}} <br><span style="color: #333333">{{.Params.domain}}</span></p>
+         </a>
+     </div>
+     {{end}}
+ </div>

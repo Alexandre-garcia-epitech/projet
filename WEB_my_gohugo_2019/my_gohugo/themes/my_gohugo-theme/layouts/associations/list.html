@@ -1,0 +1,11 @@
+{{define "main" }}
+{{ range .Data.Pages}}
+<div class="col-12 col-lg-4 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+    <div class="rec_event">
+        <img class="header-img" src="{{.Site.BaseURL}}images/{{index .Params.photo 0}}" alt="">
+        <a href="{{.Permalink}}"><h2 class="title_event" style="text-shadow: 1px 1px 2px rgb(117, 114, 113);">{{.Title}}</h2></a>
+        <p style="text-align: center;font-size: 16px; margin-bottom: -3px; color: #4d4d4d; padding-bottom: 3px; padding-top: 6px;">{{.Params.domain}}</p>
+    </div>
+</div>
+{{end}}
+{{end}}

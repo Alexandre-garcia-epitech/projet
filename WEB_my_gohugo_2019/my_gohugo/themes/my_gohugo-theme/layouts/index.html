@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $nowFormatted := time (now.Format "Mon, 02 Jan 2006 15:04:05 MST")}}
+{{ $var1 := where .Site.RegularPages "Type" "events" }}
+{{ $var2 := where $var1 "Params.important" "eq" true }}
+{{ $var3 := where $var2 "Draft" "eq" false }}
+{{ $var4 := where $var3 "Params.when" "gt" $nowFormatted.String}}
+{{ $var5 := sort $var4 "Params.when" "asec" }}
+{{ range first 10 $var5}}
+<div class="col-12 col-lg-4 offset-lg-1" style="padding-right: 0; padding-left: 0; display: inline-block; margin-top: 20px; margin-bottom: 20px">
+    <div class="rec_event">
+        <img class="header-img" src="{{.Site.BaseURL}}images/{{index .Params.photos 0}}" alt="">
+        <a href="{{.Permalink}}"><h2 class="title_event">{{.Title}}</h2></a>
+        <p style="text-align: center;font-size: 16px; margin-bottom: -3px; color: #4d4d4d; padding-bottom: 3px; padding-top: 6px;">{{.Params.postalAddress.label}}</p>
+        <p style="text-align: center;font-size: 16px;  color: #4d4d4d">{{(time .Params.when).Format "Mon, 02 Jan 2006 15:04"}}</p>
+    </div>
+</div>
+{{ end }}
+{{ end }}
