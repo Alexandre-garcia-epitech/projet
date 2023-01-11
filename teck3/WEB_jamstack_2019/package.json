@@ -17,7 +17,7 @@
     "gatsby": "^2.15.31",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-source-mysql": "^2.2.1",
-    "gatsby-transformer-remark": "^2.6.30",
+    "gatsby-transformer-remark": "^5.25.1",
     "office-ui-fabric": "^2.6.3",
     "office-ui-fabric-react": "^7.47.0",
     "react": "^16.10.2",
